@@ -14,6 +14,17 @@ app.use(express.json());
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "frontend", "dist")));
 
+const sampleData = [
+    { id: 1, name: "Ajinkya", role: "Developer" },
+    { id: 2, name: "John", role: "Designer" },
+    { id: 3, name: "Sara", role: "Manager" }
+];
+
+// API route
+app.get("/api/data", (req, res) => {
+    res.json(sampleData);
+});
+
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
